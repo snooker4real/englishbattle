@@ -91,21 +91,15 @@ public class InscriptionServlet extends HttpServlet {
         Long idVille = Long.parseLong(req.getParameter("CITY"));
         Long idNiveau = Long.parseLong(req.getParameter("LEVEL"));
 
-        //Création d'un nouveau joueur
-        Joueur joueur = new Joueur();
-        //Hydratation du joueur avec ses attributs
-        joueur.setNom(lastname);
-        joueur.setPrenom(firstname);
-        joueur.setEmail(email);
-        joueur.setMotDePasse(password);
-        joueur.setVille(getVille(idVille));
-        joueur.setNiveau(getNiveau(idNiveau));
+        //Création d'un nouveau joueur && ajout dans la BDD
+        Joueur joueur = joueurService.ajouterJoueur(email, password, lastname, firstname, villesService.recupererVille(idVille), niveauService.recupererNiveau(idNiveau));
 
         req.setAttribute("joueur", joueur);
 
         System.out.println(joueur);
+        //ajouterJoueur(joueur);
 
-        req.getRequestDispatcher("WEB-INF/inscription.jsp").forward(req, resp);
+        req.getRequestDispatcher("WEB-INF/connexion.jsp").forward(req, resp);
 
 
     }
