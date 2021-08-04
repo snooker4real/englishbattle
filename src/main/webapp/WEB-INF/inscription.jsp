@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: cindanojonathan
@@ -14,7 +15,7 @@
 </head>
 <body>
     <h1>Inscription English Battle</h1>
-    <form action="InscriptionServlet" method="post">
+    <form action="inscription" method="post">
 
         <div class="input-group mb-3">
             <div class="input-group-prepend">
@@ -42,18 +43,21 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon4">***</span>
             </div>
-            <input type="password" name="MOT_DE_PASSE" class="form-control" placeholder="Mot de passe" aria-label="Username" aria-describedby="basic-addon1" pattern="[A-ZA-z]*" required="">
+            <input type="password" name="MOT_DE_PASSE" class="form-control" placeholder="Mot de passe" aria-label="Username" aria-describedby="basic-addon1" required="">
         </div>
 
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <label class="input-group-text" for="inputGroupSelect01">Niveau</label>
             </div>
-            <select name="ID_NIVEAU" required class="custom-select" id="inputGroupSelect01">
+            <select name="LEVEL" required class="custom-select" id="inputGroupSelect01">
                 <option selected>Choisi un niveau...</option>
                 <option value="1">Débutant</option>
                 <option value="2">Intermédiaire</option>
                 <option value="3">Expert</option>
+                <c:forEach var="niveau" items="${niveaux}">
+                    <option value="${niveau.id}">${niveau.nom}</option>
+                </c:forEach>
             </select>
         </div>
 
@@ -61,18 +65,19 @@
             <div class="input-group-prepend">
                 <label class="input-group-text" for="inputGroupSelect01">Ville</label>
             </div>
-            <select name="ID_VILLE" required class="custom-select" id="inputGroupSelect02">
+            <select name="CITY" required class="custom-select" id="inputGroupSelect02">
                 <option selected>Choisi une ville...</option>
                 <option value="1">Paris</option>
                 <option value="2">Marseille</option>
                 <option value="3">Lyon</option>
                 <option value="4">Lille</option>
+                <c:forEach var="ville" items="${villes}">
+                    <option value="${ville.id}">${ville.nom}</option>
+                </c:forEach>
             </select>
         </div>
 
-        <button type="button" class="btn btn-primary">Primary</button>
-
-        <input type="submit" value="Inscription">
+        <input type="submit" class="btn btn-primary" value="Inscription">
     </form>
 </body>
 </html>
