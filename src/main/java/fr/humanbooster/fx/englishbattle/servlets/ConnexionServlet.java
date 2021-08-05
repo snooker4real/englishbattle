@@ -17,12 +17,6 @@ import java.io.IOException;
 
 @WebServlet("/connexion")
 public class ConnexionServlet extends HttpServlet {
-    /**
-     * @param req
-     * @param resp
-     * @throws ServletException
-     * @throws IOException
-     */
     private static long serialVersionUID = 1L;
 
     private JoueurService joueurService = null;

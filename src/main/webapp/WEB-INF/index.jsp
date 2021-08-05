@@ -5,10 +5,12 @@
   Time: 12:14
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
     <title>English Battle</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
@@ -17,7 +19,7 @@
 
     <form action="connexion" method="post">
         <div class="form-group">
-            <label for="exampleInputEmail1">Adresse Em@il</label>
+            <label for="exampleInputEmail1">Adresse Email</label>
             <input type="email" name="EMAIL" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Entrer votre em@il">
             <small id="emailHelp" class="form-text text-muted">Nous ne partagerons jamais vos données à quiconque.</small>
         </div>
@@ -29,7 +31,20 @@
             <input type="checkbox" class="form-check-input" id="exampleCheck1">
             <label class="form-check-label" for="exampleCheck1">Se souvenir de moi</label>
         </div>
-        <button type="submit" class="btn btn-primary">Valider</button>
+        <button type="submit" class="btn btn-success">Valider</button>
     </form>
+    <a href="inscription"><button class="btn btn-primary" type="inscription">Inscription</button></a>
+
+
+    <h2>Hall of Fame</h2>
+    <table>
+        <c:forEach var="joueur" items="${joueurs}">
+            <tr>
+                <td><h3>${joueur.prenom} ${joueur.nom}<c:if test="${joueur.estEnLigne}"> (connecté)</c:if></h3></td>
+                <td><h2>${joueur.meilleurScore}</h2></td>
+            </tr>
+        </c:forEach>
+    </table>
+
 </body>
 </html>

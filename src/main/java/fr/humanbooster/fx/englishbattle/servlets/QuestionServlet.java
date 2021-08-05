@@ -37,7 +37,7 @@ public class QuestionServlet extends HttpServlet {
         req.getSession().setAttribute("question", question);
         req.setAttribute("sessionScope", req.getSession());
 
-        req.getRequestDispatcher("WEB/partie.jsp").forward(req, resp);
+        req.getRequestDispatcher("WEB-INF/question.jsp").forward(req, resp);
 
     }
 
