@@ -19,7 +19,8 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(value = "/jeu", loadOnStartup = 1)
+@WebServlet(urlPatterns="/jeu", loadOnStartup = 1)
+
 public class QuestionServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
